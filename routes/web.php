@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutomovilesController;
+use App\Http\Controllers\FiltroAutomovil;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 
 Route::resource('deposito/Automoviles', AutomovilesController::class);
+
+Route::resource('deposito/Filtros', FiltroAutomoviL::class);

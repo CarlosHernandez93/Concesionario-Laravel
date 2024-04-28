@@ -5,12 +5,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">LISTADO DE Automoviles</h1>
+                <h1 class="m-0">LISTADO DE FILTROS</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                     <li class="breadcrumb-item active">Automoviles</li>
+                    <li class="breadcrumb-item active">Filtros</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,7 +26,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col-xl-12">
-                        <form action="{{ route('Automoviles.index') }}" method="get">
+                        <form action="{{ route('Filtros.index') }}" method="get">
 
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -38,7 +39,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="input-group mb-6">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-plus-circle-fill"></i></span>
-                                        <a href="{{ route('Automoviles.create') }}" class="btn btn-success">Nuevo Automovil</a>
+                                        <a href="{{ route('Filtros.create') }}" class="btn btn-success">Nuevo Filtro</a>
                                     </div>
                                 </div>
                             </div>
@@ -54,18 +55,20 @@
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>Opciones{{$text}}</th>
-                                    <th>Id</th>
+                                    <th>Opciones</th>
+                                    <th>Codigo</th>
                                     <th>Nombre</th>
-                                    <th>Referencia</th>
                                     <th>Descripción</th>
+                                    <th>Existencia</th>
+                                    <th>Imagen</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Automoviles as $aut)
+                                @foreach ($filtros as $flt)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('Automoviles.edit', $aut->id_automovil) }}" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                                        <a href="{{ route('FiltroAutomovil.edit', $aut->id_FiltroAutomovil) }}" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
                                         <!-- Button trigger for danger theme modal -->
                                         <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $aut->id_automovil}}">
                                         <i class="fas fa-trash-alt">
@@ -73,17 +76,20 @@
                                         </i>
                                         </button>
                                     </td>
-                                    <td>{{ $aut->id_automovil}}</td>
-                                    <td>{{ $aut->marca}}</td>
-                                    <td>{{ $aut->referencia}}</td>
-                                    <td>{{ $aut->descripcion}}</td>
+                                    <td>{{ $flt->id_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->marca_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->referencia_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->descripcion_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->existencia_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->imagen_FiltroAutomovil}}</td>
+                                    <td>{{ $flt->estado_FiltroAutomovil}}</td>
 
                                 </tr>
-                                @include('deposito.automoviles.modal')
+                                @include('deposito.FiltroAutomovil.modal')
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $Automoviles->links() }}
+                        {{ $filtros->links() }}
                     </div>
                 </div>
             </div>
